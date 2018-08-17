@@ -4,16 +4,18 @@ public class News {
 
     private String mtitle;
     private String msection;
-    private Long mdate;
+    private String mdate;
     private String mUrl;
+    private String mauthor;
 
-    public News(String title, String section, Long date, String url) {
+    public News(String title, String section, String date, String url, String author) {
 
 
         mtitle = title;
         msection = section;
         mdate = date;
         mUrl = url;
+        mauthor = author;
 
     }
 
@@ -33,11 +35,11 @@ public class News {
         this.msection = msection;
     }
 
-    public Long getMdate() {
+    public String getMdate() {
         return mdate;
     }
 
-    public void setMdate(Long mdate) {
+    public void setMdate(String mdate) {
         this.mdate = mdate;
     }
 
@@ -47,5 +49,13 @@ public class News {
 
     public void setmUrl(String mUrl) {
         this.mUrl = mUrl;
+    }
+
+    public String getMauthor() {
+        return mauthor;
+    }
+
+    public void setMauthor(String mauthor) {
+        this.mauthor = mauthor;
     }
 }

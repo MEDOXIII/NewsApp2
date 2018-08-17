@@ -3,7 +3,9 @@ package com.example.android.newsapp;
 import android.content.Context;
 
 import android.util.Log;
+
 import java.util.List;
+
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v4.content.AsyncTaskLoader;

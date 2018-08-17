@@ -137,8 +137,9 @@ public final class QueryUtils {
 
             JSONObject baseJsonResponse = new JSONObject(newsJSON);
 
+            JSONObject res = baseJsonResponse.getJSONObject("response");
 
-            JSONArray newsArray = baseJsonResponse.getJSONArray("features");
+            JSONArray newsArray = res.getJSONArray("results");
 
 
             for (int i = 0; i < newsArray.length(); i++) {
@@ -147,22 +148,28 @@ public final class QueryUtils {
                 JSONObject currentNews = newsArray.getJSONObject(i);
 
 
-                JSONObject properties = currentNews.getJSONObject("properties");
+                String title = currentNews.getString("webTitle");
 
 
-                String title = properties.getString("title");
+                String section = currentNews.getString("sectionName");
 
 
-                String section = properties.getString("section");
+                String date = currentNews.getString("webPublicationDate");
 
 
-                long date = properties.getLong("date");
+                String url = currentNews.getString("webUrl");
 
 
-                String url = properties.getString("url");
+                JSONArray tagsArray = currentNews.getJSONArray("tags");
 
+                String author = null;
 
-                News news = new News(title, section, date, url);
+                if (tagsArray.length() == 1) {
+                    JSONObject contributorTag = (JSONObject) tagsArray.get(0);
+                    author = contributorTag.getString("webTitle");
+                }
+
+                News news = new News(title, section, date, url, author);
 
 
                 newsList.add(news);
